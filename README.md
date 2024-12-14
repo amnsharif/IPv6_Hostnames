@@ -28,17 +28,13 @@ sudo chmod +x /usr/local/bin/update_unbound_entries.sh
 sudo bash update_unbound_entries.sh
 ```
 #### **Usage**
-To run the script manually:
-```
-sudo /usr/local/bin/update_unbound_entries.sh
-```
 To automate the process, add a cron job:
 ```
 sudo crontab -e
 ```
 Add the following line:
 ```
-0 * * * * /usr/local/bin/update_unbound_entries.sh
+0 * * * * bash /usr/local/bin/update_unbound_entries.sh
 ```
 This will run the script hourly.
 
@@ -70,6 +66,12 @@ sudo chmod +x /usr/local/bin/update_unbound_entries.sh
 configctl unbound check
 ```
 3. No Hostname Found: Verify that the device has a hostname assigned via DHCP.
+4. No such file or directory:
+   Create the OPNsense template directory and +TARGETS file:
+```
+mkdir -p /usr/local/opnsense/service/templates/sampleuser/Unbound
+echo "sampleuser_dynamic_hosts.conf:/usr/local/etc/unbound.opnsense.d/sampleuser_dynamic_hosts.conf" > /usr/local/opnsense/service/templates/sampleuser/Unbound/+TARGETS
+```
 
 #### **Contributing**
 If you find this helpful and would like to contribute, please consider visiting my [Patreon page](
