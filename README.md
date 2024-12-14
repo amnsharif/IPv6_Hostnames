@@ -23,36 +23,9 @@ cd unbound-dynamic-hostname
 sudo cp update_unbound_entries.sh /usr/local/bin/
 sudo chmod +x /usr/local/bin/update_unbound_entries.sh
 ```
-
-3. Create the OPNsense template directory and +TARGETS file:
+3. Run the script to generate the configuration:
 ```
-mkdir -p /usr/local/opnsense/service/templates/sampleuser/Unbound
-echo "sampleuser_dynamic_hosts.conf:/usr/local/etc/unbound.opnsense.d/sampleuser_dynamic_hosts.conf" > /usr/local/opnsense/service/templates/sampleuser/Unbound/+TARGETS
-```
-
-4. Set up the template file:
-```
-cp sampleuser_dynamic_hosts.conf /usr/local/opnsense/service/templates/sampleuser/Unbound/
-```
-
-5. Run the script to generate the configuration:
-```
-sudo /usr/local/bin/update_unbound_entries.sh
-```
-
-6. Reload the Unbound template:
-```
-configctl template reload sampleuser/Unbound
-```
-
-7. Check the configuration:
-```
-configctl unbound check
-```
-
-8. Restart Unbound:
-```
-configctl unbound restart
+sudo bash update_unbound_entries.sh
 ```
 #### **Usage**
 To run the script manually:
