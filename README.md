@@ -57,17 +57,17 @@ Skipping specific addresses: The script automatically skips link-local IPv6 addr
 
 #### **Troubleshooting**
 
-1. Error: Permission Denied Ensure the script is executable and run as root.
+1. Error. Permission Denied: Ensure the script is executable and run as root.
 ```
 sudo chmod +x /usr/local/bin/update_unbound_entries.sh
 ```
-2. Invalid Configuration Check the Unbound configuration:
+2. Invalid Configuration: Check the Unbound configuration:
 ```
 configctl unbound check
 ```
 3. No Hostname Found: Verify that the device has a hostname assigned via DHCP.
 4. No such file or directory:
-   Create the OPNsense template directory and +TARGETS file:
+   Create the OPNsense template directory and +TARGETS file manually:
 ```
 mkdir -p /usr/local/opnsense/service/templates/sampleuser/Unbound
 echo "sampleuser_dynamic_hosts.conf:/usr/local/etc/unbound.opnsense.d/sampleuser_dynamic_hosts.conf" > /usr/local/opnsense/service/templates/sampleuser/Unbound/+TARGETS
