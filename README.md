@@ -27,7 +27,7 @@ sudo chmod +x /usr/local/bin/update_unbound_entries.sh
 ```
 sudo bash update_unbound_entries.sh
 ```
-#### **Usage**
+#### **Automation*
 To automate the process, add a cron job:
 ```
 sudo crontab -e
