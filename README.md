@@ -74,5 +74,5 @@ echo "sampleuser_dynamic_hosts.conf:/usr/local/etc/unbound.opnsense.d/sampleuser
 ```
 
 #### **Contributing**
-If you find this helpful and would like to contribute, please consider visiting my [Patreon page](
+If you find this helpful and would like to contribute, please consider [buying me a coffee](https://buymeacoffee.com/amnsharif) or visiting my [Patreon page](
 https://patreon.com/amnsharif?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink)
