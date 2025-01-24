@@ -15,16 +15,6 @@ TEMP_TEMPLATE_FILE="/tmp/temp_custom_entries.conf"
 # Ensure the template directory exists
 mkdir -p "$TEMPLATE_DIR"
 
-# Create or truncate the temporary template file
-cat << EOF > "$TEMP_TEMPLATE_FILE"
-server:
-  local-zone: "home" transparent
-  local-data-ptr: "127.0.0.1 localhost"
-  local-data: "localhost A 127.0.0.1"
-  local-data-ptr: "::1 localhost"
-  local-data: "localhost AAAA ::1"
-EOF
-
 # Step 1: Extract IPv4 -> MAC mappings
 echo "Gathering IPv4 to MAC mappings..."
 ARP_FILE="/tmp/arp_table.txt"
