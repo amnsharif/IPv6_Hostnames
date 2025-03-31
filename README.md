@@ -23,49 +23,18 @@ cd unbound-dynamic-hostname
 sudo cp update_unbound_entries.sh /usr/local/bin/
 sudo chmod +x /usr/local/bin/update_unbound_entries.sh
 ```
-
-3. Create the OPNsense template directory and +TARGETS file:
+3. Run the script to generate the configuration:
 ```
-mkdir -p /usr/local/opnsense/service/templates/sampleuser/Unbound
-echo "sampleuser_dynamic_hosts.conf:/usr/local/etc/unbound.opnsense.d/sampleuser_dynamic_hosts.conf" > /usr/local/opnsense/service/templates/sampleuser/Unbound/+TARGETS
+sudo bash update_unbound_entries.sh
 ```
-
-4. Set up the template file:
-```
-cp sampleuser_dynamic_hosts.conf /usr/local/opnsense/service/templates/sampleuser/Unbound/
-```
-
-5. Run the script to generate the configuration:
-```
-sudo /usr/local/bin/update_unbound_entries.sh
-```
-
-6. Reload the Unbound template:
-```
-configctl template reload sampleuser/Unbound
-```
-
-7. Check the configuration:
-```
-configctl unbound check
-```
-
-8. Restart Unbound:
-```
-configctl unbound restart
-```
-#### **Usage**
-To run the script manually:
-```
-sudo /usr/local/bin/update_unbound_entries.sh
-```
+#### **Automation**
 To automate the process, add a cron job:
 ```
 sudo crontab -e
 ```
 Add the following line:
 ```
-0 * * * * /usr/local/bin/update_unbound_entries.sh
+0 * * * * bash /usr/local/bin/update_unbound_entries.sh
 ```
 This will run the script hourly.
 
@@ -88,16 +57,22 @@ Skipping specific addresses: The script automatically skips link-local IPv6 addr
 
 #### **Troubleshooting**
 
-1. Error: Permission Denied Ensure the script is executable and run as root.
+1. Error. Permission Denied: Ensure the script is executable and run as root.
 ```
 sudo chmod +x /usr/local/bin/update_unbound_entries.sh
 ```
-2. Invalid Configuration Check the Unbound configuration:
+2. Invalid Configuration: Check the Unbound configuration:
 ```
 configctl unbound check
 ```
 3. No Hostname Found: Verify that the device has a hostname assigned via DHCP.
+4. No such file or directory:
+   Create the OPNsense template directory and +TARGETS file manually:
+```
+mkdir -p /usr/local/opnsense/service/templates/sampleuser/Unbound
+echo "sampleuser_dynamic_hosts.conf:/usr/local/etc/unbound.opnsense.d/sampleuser_dynamic_hosts.conf" > /usr/local/opnsense/service/templates/sampleuser/Unbound/+TARGETS
+```
 
 #### **Contributing**
-If you find this helpful and would like to contribute, please consider visiting my [Patreon page](
+If you find this helpful and would like to contribute, please consider [buying me a coffee](https://buymeacoffee.com/amnsharif) or visiting my [Patreon page](
 https://patreon.com/amnsharif?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink)
