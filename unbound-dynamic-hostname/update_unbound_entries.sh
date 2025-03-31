@@ -15,11 +15,6 @@ if [ -f "$LEASES_FILE" ]; then
     cp "$LEASES_FILE" "$TEMP_LEASES_FILE"
 else
     cat << EOF > "$TEMP_LEASES_FILE"
-local-zone: "home" transparent
-local-data-ptr: "127.0.0.1 localhost"
-local-data: "localhost A 127.0.0.1"
-local-data-ptr: "::1 localhost"
-local-data: "localhost AAAA ::1"
 EOF
 fi
 # Step 1: Extract IPv4 -> MAC mappings
